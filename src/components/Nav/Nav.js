@@ -1,12 +1,13 @@
 import React from "react";
 import { Ul, Li, Navbar, Inner } from "./NavStyle";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 export default({ init }) => {
+  const history = useHistory();
   return (
     <Navbar>
       <Inner>
         <div>
-          <Link to="/">
+          <Link to="/" onClick={()=>{history.push("/")}}>
             <h1>
               movie<span>on</span>
             </h1>

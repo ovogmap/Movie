@@ -10,7 +10,6 @@ import Detail from "../routes/Detail";
 import Nav from "./Nav/Nav"
 import { authService, dbStore } from "../fbase";
 import ListMore from "../routes/ListMore";
-import Loading from "./Loading/Loading";
 
 export const UserContext = React.createContext();
 export const LikesList = React.createContext();
@@ -59,35 +58,33 @@ export default function AppRouter() {
     });
   };
   return (
-    <Router>
+    <Router basename={window.location.pathname || ''}>
       <>
       <LikesList.Provider value={{likeList, setLikeList, isLike, setIsLike, userObj, isLoading}}>
         <Nav init={init} />
         <Switch>
           <>
-            <Route exact path="/">
-                <Home userObj={userObj} />
-              </Route>
-              <Route path="/auth">
-                <Auth userObj={userObj} setNickName={setNickName} refreshUser={refreshUser} />
-              </Route>
-              <Route path="/search" component={Search} />
-              <Route path="/list" component={List} />
-              <UserContext.Provider value={userObj}>
-                <Route path="/detail/:id" component={Detail} />
-                <Route path="/listmore/:name" component={ListMore} />
-                <Route path="/like" component={Like} />
-              </UserContext.Provider>
-              <Route path="/profile">
-                {userObj && (
-                  <Profile
-                    setInit={setInit}
-                    userObj={userObj}
-                    refreshUser={refreshUser}
-                  />
-                )}
-              </Route>
-            </>
+            <Route exact path="/" component={Home}/>
+            <Route path="/auth">
+              <Auth userObj={userObj} setNickName={setNickName} refreshUser={refreshUser} />
+            </Route>
+            <Route path="/search" component={Search} />
+            <Route path="/list" component={List} />
+            <UserContext.Provider value={userObj}>
+              <Route path="/detail/:id" component={Detail} />
+              <Route path="/listmore/:name" component={ListMore} />
+              <Route path="/like" component={Like} />
+            </UserContext.Provider>
+            <Route path="/profile">
+              {userObj && (
+                <Profile
+                  setInit={setInit}
+                  userObj={userObj}
+                  refreshUser={refreshUser}
+                />
+              )}
+            </Route>
+          </>
         </Switch>
         </LikesList.Provider>
       </>

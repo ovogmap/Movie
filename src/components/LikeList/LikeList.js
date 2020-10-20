@@ -29,6 +29,7 @@ const ItemIntro = styled.div`
       font-weight: 900;
       font-size: 16px;
       border-radius: 5px;
+      cursor: pointer;
     }
   }
 `;

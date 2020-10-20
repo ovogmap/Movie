@@ -8,7 +8,7 @@ const IMG_PATH = 'https://image.tmdb.org/t/p/original/'
 
 export default async function introApi() {
 
-  let result = await axios.get(`${BASE_URL}trending/movie/week?api_key=${API_KEY}&language=${LANGUAGE}`)
+  let result = await axios.get(`${BASE_URL}movie/popular?api_key=${API_KEY}&language=${LANGUAGE}`)
   .then(response => response)
   result = result.data.results;
   let id = result[Math.floor(Math.random() * result.length)].id
