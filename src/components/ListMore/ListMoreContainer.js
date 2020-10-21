@@ -15,7 +15,11 @@ export default({name}) => {
   const onScrollfatchData = async () => {
     const result = await fetchData(name, num)
     const NewArray = result.data.results
-    setOnData([...onData, ...NewArray])
+    console.log("제발 떠라 진짜 ㅡㅡ",NewArray)
+    const array = NewArray.filter(item => {
+      return item.backdrop_path !== null
+    })
+    setOnData([...onData, ...array])
   }
   useEffect(() => {
     onScrollfatchData()

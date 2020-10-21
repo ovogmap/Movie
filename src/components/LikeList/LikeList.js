@@ -72,7 +72,7 @@ export default ({likeList, setLikeList}) => {
         return (
           <div className="itembox" key={id}>
             <Link to={`/detail/${id}`} >
-              <img src={`//image.tmdb.org/t/p/original/${poster_path}`} alt="" width="200px" height="300px" />
+              <img src={`${poster_path}`} alt="" width="200px" height="300px" />
               <p>{title}</p>
             </Link>
             <button onClick={()=>{onRemove(id)}}>좋아요 취소</button>
